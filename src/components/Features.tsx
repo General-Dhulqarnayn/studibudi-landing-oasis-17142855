@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
-import { Users, Sparkles, Globe } from "lucide-react";
+import { Users, MessageSquare, DoorOpen, BookOpen } from "lucide-react";
 
 const features = [
+  {
+    icon: DoorOpen,
+    title: "Create your room",
+    description:
+      "Create your own personal room where users can join and chat about your chosen topic.",
+  },
+  {
+    icon: BookOpen,
+    title: "Join a room",
+    description:
+      "Want knowledge and understanding? Join an expert's room today and ask them anything and everything!",
+  },
   {
     icon: Users,
     title: "Connect with Peers",
@@ -9,13 +21,7 @@ const features = [
       "Find and connect with students who share your interests and academic goals.",
   },
   {
-    icon: Sparkles,
-    title: "Discover Opportunities",
-    description:
-      "Access exclusive events, workshops, and networking opportunities.",
-  },
-  {
-    icon: Globe,
+    icon: MessageSquare,
     title: "Global Community",
     description:
       "Join a diverse community of students from around the world.",
@@ -44,7 +50,7 @@ export const Features = () => {
             Everything you need to succeed
           </motion.h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
