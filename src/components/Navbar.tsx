@@ -32,18 +32,6 @@ export const Navbar = () => {
             >
               Features
             </a>
-            <a
-              href="#community"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Community
-            </a>
-            <a
-              href="#about"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              About
-            </a>
             <Button
               variant="default"
               className="bg-primary hover:bg-primary-hover transition-colors"
