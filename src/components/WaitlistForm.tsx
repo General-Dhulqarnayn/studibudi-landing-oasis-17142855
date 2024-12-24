@@ -66,7 +66,7 @@ export const WaitlistForm = () => {
   };
 
   return (
-    <section className="py-16 bg-muted">
+    <section id="waitlist-section" className="py-16 bg-muted">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center mb-8">
           <h2 className="text-3xl font-bold mb-4">Join Our Waitlist</h2>
@@ -76,12 +76,13 @@ export const WaitlistForm = () => {
         </div>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
           <Input
+            id="waitlist-email"
             type="email"
             placeholder="Enter your email to join the waitlist"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="flex-1"
+            className="flex-1 transition-all duration-300"
           />
           <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
             {isLoading ? "Joining..." : "Join Waitlist"}

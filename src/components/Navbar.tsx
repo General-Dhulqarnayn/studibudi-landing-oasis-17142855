@@ -12,6 +12,22 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToWaitlist = () => {
+    const waitlistSection = document.querySelector('#waitlist-section');
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth' });
+      // Add highlight class to input
+      const emailInput = document.querySelector('#waitlist-email');
+      if (emailInput) {
+        emailInput.classList.add('highlight-input');
+        // Remove the class after animation completes
+        setTimeout(() => {
+          emailInput.classList.remove('highlight-input');
+        }, 2000);
+      }
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -35,6 +51,7 @@ export const Navbar = () => {
             <Button
               variant="default"
               className="bg-primary hover:bg-primary-hover transition-colors"
+              onClick={scrollToWaitlist}
             >
               Join Now
             </Button>

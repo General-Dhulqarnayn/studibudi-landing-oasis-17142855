@@ -2,6 +2,22 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export const CTA = () => {
+  const scrollToWaitlist = () => {
+    const waitlistSection = document.querySelector('#waitlist-section');
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth' });
+      // Add highlight class to input
+      const emailInput = document.querySelector('#waitlist-email');
+      if (emailInput) {
+        emailInput.classList.add('highlight-input');
+        // Remove the class after animation completes
+        setTimeout(() => {
+          emailInput.classList.remove('highlight-input');
+        }, 2000);
+      }
+    }
+  };
+
   return (
     <section className="py-20 bg-primary">
       <div className="container mx-auto px-6">
@@ -33,6 +49,7 @@ export const CTA = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-gray-50 px-8 py-6 text-lg"
+              onClick={scrollToWaitlist}
             >
               Get Started Now
             </Button>
