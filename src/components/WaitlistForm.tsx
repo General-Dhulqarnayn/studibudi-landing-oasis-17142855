@@ -66,23 +66,9 @@ export const WaitlistForm = () => {
   return (
     <section 
       id="waitlist-section" 
-      className="py-24 bg-gradient-to-b from-white to-muted relative overflow-hidden"
+      className="py-12 bg-gradient-to-b from-white to-muted relative overflow-hidden -mt-20"
     >
       <div className="container mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Join Our Waitlist
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Be the first to experience our platform when we launch
-          </p>
-        </motion.div>
-
         <motion.form 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
