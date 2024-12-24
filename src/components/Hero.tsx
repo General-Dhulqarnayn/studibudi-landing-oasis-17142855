@@ -61,8 +61,8 @@ export const Hero = () => {
           className="mt-16 max-w-5xl mx-auto"
         >
           <img
-            src="/lovable-uploads/f061fd0f-dd7a-4597-91ac-6c0b5e02582d.png"
-            alt="Diverse group of happy students"
+            src="/lovable-uploads/d909017e-47d3-4383-b7af-3895d7fd23a9.png"
+            alt="Group of diverse students studying together outside campus building"
             className="w-full h-auto rounded-2xl shadow-2xl animate-float"
           />
         </motion.div>
