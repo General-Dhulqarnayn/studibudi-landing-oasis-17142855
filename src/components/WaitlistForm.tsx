@@ -15,7 +15,6 @@ export const WaitlistForm = () => {
     setIsLoading(true);
 
     try {
-      // First, check if email exists
       const { data: existingEntry } = await supabase
         .from("waitlist")
         .select()
@@ -31,14 +30,12 @@ export const WaitlistForm = () => {
         return;
       }
 
-      // If email doesn't exist, add to waitlist
       const { error: dbError } = await supabase
         .from("waitlist")
         .insert({ email });
 
       if (dbError) throw dbError;
 
-      // Send confirmation email
       const { error: emailError } = await supabase.functions.invoke(
         "send-waitlist-confirmation",
         {
@@ -69,28 +66,20 @@ export const WaitlistForm = () => {
   return (
     <section 
       id="waitlist-section" 
-      className="py-24 bg-gradient-to-b from-muted to-white relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-white to-muted relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/50 to-white/90 -z-10" />
-      
-      <div className="container mx-auto px-6 relative">
+      <div className="container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center mb-12"
         >
-          <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary inline-block mb-4">
-            Join Our Community
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">
-            Be Part of Something Special
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            Join Our Waitlist
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Join our waitlist today and be the first to experience our platform when we launch.
-            Connect with like-minded students and build your network.
+          <p className="text-lg text-gray-600 mb-8">
+            Be the first to experience our platform when we launch
           </p>
         </motion.div>
 
@@ -102,7 +91,7 @@ export const WaitlistForm = () => {
           onSubmit={handleSubmit} 
           className="max-w-xl mx-auto"
         >
-          <div className="flex flex-col sm:flex-row gap-4 p-2 bg-white rounded-lg shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input
               id="waitlist-email"
               type="email"
@@ -110,13 +99,13 @@ export const WaitlistForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 transition-all duration-300 text-lg h-14 border-2 focus:border-primary"
+              className="flex-1 transition-all duration-300 text-lg h-14"
             />
             <Button 
               type="submit" 
               disabled={isLoading} 
               size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary-hover text-white font-semibold px-8 h-14"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-8 h-14"
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
@@ -132,16 +121,6 @@ export const WaitlistForm = () => {
             </Button>
           </div>
         </motion.form>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 text-center text-sm text-muted-foreground"
-        >
-          <p>Join {Math.floor(Math.random() * 50) + 150}+ students already on the waitlist</p>
-        </motion.div>
       </div>
     </section>
   );
