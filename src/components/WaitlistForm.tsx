@@ -17,7 +17,7 @@ export const WaitlistForm = () => {
       // Insert email into waitlist table
       const { error: dbError } = await supabase
         .from("waitlist")
-        .insert([{ email }]);
+        .insert({ email });
 
       if (dbError) throw dbError;
 
@@ -37,6 +37,7 @@ export const WaitlistForm = () => {
 
       setEmail("");
     } catch (error) {
+      console.error("Error:", error);
       toast({
         variant: "destructive",
         title: "Error",
