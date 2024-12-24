@@ -21,6 +21,10 @@ const handler = async (req: Request): Promise<Response> => {
     const { email }: EmailRequest = await req.json();
     console.log("Sending confirmation email to:", email);
 
+    if (!RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not set");
+    }
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
