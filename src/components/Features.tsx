@@ -20,12 +20,6 @@ const features = [
     description:
       "Find and connect with students who share your interests and academic goals.",
   },
-  {
-    icon: MessageSquare,
-    title: "Global Community",
-    description:
-      "Join a diverse community of students from around the world.",
-  },
 ];
 
 export const Features = () => {
@@ -50,7 +44,7 @@ export const Features = () => {
             Everything you need to succeed
           </motion.h2>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
