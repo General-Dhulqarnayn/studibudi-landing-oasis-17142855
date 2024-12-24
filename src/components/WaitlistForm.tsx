@@ -14,15 +14,31 @@ export const WaitlistForm = () => {
     setIsLoading(true);
 
     try {
-      // First, add to waitlist table
+      // First, check if email exists
+      const { data: existingEntry } = await supabase
+        .from("waitlist")
+        .select()
+        .eq("email", email)
+        .maybeSingle();
+
+      if (existingEntry) {
+        toast({
+          title: "Already registered!",
+          description: "This email is already on our waitlist. We'll notify you when we launch!",
+        });
+        setEmail("");
+        return;
+      }
+
+      // If email doesn't exist, add to waitlist
       const { error: dbError } = await supabase
         .from("waitlist")
         .insert({ email });
 
       if (dbError) throw dbError;
 
-      // Then, send confirmation email using our edge function
-      const { data: emailData, error: emailError } = await supabase.functions.invoke(
+      // Send confirmation email
+      const { error: emailError } = await supabase.functions.invoke(
         "send-waitlist-confirmation",
         {
           body: { email },
