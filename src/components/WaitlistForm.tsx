@@ -14,19 +14,22 @@ export const WaitlistForm = () => {
     setIsLoading(true);
 
     try {
+      // First, add to waitlist table
       const { error: dbError } = await supabase
         .from("waitlist")
         .insert({ email });
 
       if (dbError) throw dbError;
 
-      const response = await fetch("/api/send-waitlist-confirmation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      // Then, send confirmation email using our edge function
+      const { data: emailData, error: emailError } = await supabase.functions.invoke(
+        "send-waitlist-confirmation",
+        {
+          body: { email },
+        }
+      );
 
-      if (!response.ok) throw new Error("Failed to send confirmation email");
+      if (emailError) throw emailError;
 
       toast({
         title: "Success!",
