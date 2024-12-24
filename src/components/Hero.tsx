@@ -34,26 +34,6 @@ export const Hero = () => {
             Connect with like-minded students for fun, friendships, and future
             opportunities.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary-hover text-white px-8 py-6 text-lg transition-all transform hover:scale-105"
-            >
-              Get Started
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 px-8 py-6 text-lg hover:bg-gray-50 transition-all"
-            >
-              Explore Communities
-            </Button>
-          </motion.div>
         </div>
 
         <motion.div
