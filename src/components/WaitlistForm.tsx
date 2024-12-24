@@ -66,7 +66,7 @@ export const WaitlistForm = () => {
   return (
     <section 
       id="waitlist-section" 
-      className="py-12 bg-gradient-to-b from-white to-muted relative overflow-hidden -mt-20"
+      className="py-12 relative overflow-hidden -mt-20"
     >
       <div className="container mx-auto px-6">
         <motion.form 
