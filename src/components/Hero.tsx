@@ -4,7 +4,7 @@ import { WaitlistForm } from "./WaitlistForm";
 
 export const Hero = () => {
   return (
-    <section className="pt-32 pb-20 px-6 min-h-screen flex items-center bg-gradient-to-b from-white to-muted">
+    <section className="pt-32 pb-20 px-6 min-h-screen flex items-center">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <motion.span
@@ -43,19 +43,6 @@ export const Hero = () => {
           className="mt-16 max-w-2xl mx-auto"
         >
           <WaitlistForm />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 max-w-5xl mx-auto"
-        >
-          <img
-            src="/lovable-uploads/d909017e-47d3-4383-b7af-3895d7fd23a9.png"
-            alt="Group of diverse students studying together outside campus building"
-            className="w-full h-auto rounded-2xl shadow-2xl animate-float"
-          />
         </motion.div>
       </div>
     </section>
