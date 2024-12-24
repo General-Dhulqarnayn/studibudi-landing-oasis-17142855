@@ -14,14 +14,12 @@ export const WaitlistForm = () => {
     setIsLoading(true);
 
     try {
-      // Insert email into waitlist table
       const { error: dbError } = await supabase
         .from("waitlist")
         .insert({ email });
 
       if (dbError) throw dbError;
 
-      // Send confirmation email
       const response = await fetch("/api/send-waitlist-confirmation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -49,20 +47,28 @@ export const WaitlistForm = () => {
   };
 
   return (
-    <div className="bg-primary/5 py-4 px-6 border-b">
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex gap-4 items-center">
-        <Input
-          type="email"
-          placeholder="Enter your email to join the waitlist"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="flex-1"
-        />
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Joining..." : "Join Waitlist"}
-        </Button>
-      </form>
-    </div>
+    <section className="py-16 bg-muted">
+      <div className="container mx-auto px-6">
+        <div className="max-w-2xl mx-auto text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4">Join Our Waitlist</h2>
+          <p className="text-muted-foreground">
+            Be the first to know when we launch. Sign up for early access.
+          </p>
+        </div>
+        <form onSubmit={handleSubmit} className="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
+          <Input
+            type="email"
+            placeholder="Enter your email to join the waitlist"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="flex-1"
+          />
+          <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
+            {isLoading ? "Joining..." : "Join Waitlist"}
+          </Button>
+        </form>
+      </div>
+    </section>
   );
 };
