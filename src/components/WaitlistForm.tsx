@@ -66,7 +66,7 @@ export const WaitlistForm = () => {
   return (
     <section 
       id="waitlist-section" 
-      className="py-12 relative overflow-hidden -mt-20"
+      className="py-12 relative overflow-hidden"
     >
       <div className="container mx-auto px-6">
         <motion.form 
@@ -107,6 +107,28 @@ export const WaitlistForm = () => {
             </Button>
           </div>
         </motion.form>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-8 items-center"
+        >
+          <div className="relative">
+            <img
+              src="/lovable-uploads/d6b3fa72-31b2-441b-85b9-e242294c76ea.png"
+              alt="StudiBudi chat room interface preview"
+              className="w-full h-auto rounded-3xl shadow-xl"
+            />
+          </div>
+          <div className="relative">
+            <img
+              src="/lovable-uploads/8ecd2b2b-995a-4def-8275-7a86012d8a8c.png"
+              alt="StudiBudi chat room interface with navigation"
+              className="w-full h-auto rounded-3xl shadow-xl"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
