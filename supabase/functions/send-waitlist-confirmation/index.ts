@@ -35,7 +35,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "StudiBudi <onboarding@resend.dev>",
+        from: "StudiBudi <hello@studibudi.com>", // Update this with your verified domain email
         to: [email],
         subject: "Welcome to StudiBudi Waitlist!",
         html: `
@@ -59,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Detailed error in send-waitlist-confirmation function:", error);
     return new Response(
       JSON.stringify({ 
