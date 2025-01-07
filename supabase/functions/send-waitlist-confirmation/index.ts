@@ -35,7 +35,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "StudiBudi <hello@studibudi.com>", // Update this with your verified domain email
+        from: "StudiBudi <info@studibudi.com>", // Updated sender email
         to: [email],
         subject: "Welcome to StudiBudi Waitlist!",
         html: `
